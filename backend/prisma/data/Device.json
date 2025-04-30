@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "status": "ready",
+    "type": "light",
+    "power_rating": "5",
+    "room_name": "bedroom",
+    "serial_number": "0000001",
+    "feed": "bbc-led"
+  },
+  {
+    "id": 2,
+    "status": "ready",
+    "type": "light_sensor",
+    "power_rating": "2",
+    "room_name": "garden",
+    "serial_number": "0000001",
+    "feed": "cambienas"
+  },
+  {
+    "id": 3,
+    "status": "ready",
+    "type": "light",
+    "power_rating": "5",
+    "room_name": "kitchen",
+    "serial_number": "0000002",
+    "feed": "bbc-led"
+  },
+  {
+    "id": 4,
+    "status": "ready",
+    "type": "fan",
+    "power_rating": "7",
+    "room_name": "livingroom",
+    "serial_number": "0000002",
+    "feed": "fan"
+  },
+  {
+    "id": 5,
+    "status": "ready",
+    "type": "temp_sensor",
+    "power_rating": "5",
+    "room_name": "all",
+    "serial_number": "0000001",
+    "feed": "cambiennd"
+  },
+  {
+    "id": 6,
+    "status": "ready",
+    "type": "humid_sensor",
+    "power_rating": "2",
+    "room_name": "all",
+    "serial_number": "0000001",
+    "feed": "cambienda"
+  }
+]

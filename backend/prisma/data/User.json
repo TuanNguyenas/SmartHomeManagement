@@ -1,0 +1,20 @@
+[
+  {
+    "id": 4,
+    "email": "voquynhchantran120804@gmail.com",
+    "first_name": "Vo",
+    "last_name": "Tran",
+    "password_hash": "Jgb3rMAmS45eGUT0HVz6soBrXlOar+WKA+r9cv7Afwo=",
+    "salt": "jXJuhlcexyXgbY4rHPiRozA2Sf8VZEsPAC8Oyaa+ayfu5zajhYGw0uL721U2tYMPpwfL1TCSo5N5poARzmI0wQ==",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImVtYWlsIjoidm9xdXluaGNoYW50cmFuMTIwODA0QGdtYWlsLmNvbSIsImlhdCI6MTc0MjI5MjM3N30.c7sy8ko7so_K0tEibYcDf92AJr6PkiWeWVogRyhAqsQ"
+  },
+  {
+    "id": 5,
+    "email": "trung.nguyen2004@hcmut.edu.vn",
+    "first_name": "Trung",
+    "last_name": "Nguyen",
+    "password_hash": "TZngw/nsTgaGTMvBufR/VBbyCSo/U8y+HghAL+49KXQ=",
+    "salt": "sGl/kw9+Ro3QHKfjJL73eqwAtVELtaAwNgZBukJpxiquGuaMaIbKMfGziRyJzBfbEDqHrRIyeYg7vJx7SvpMqQ==",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoidHJ1bmcubmd1eWVuMjAwNEBoY211dC5lZHUudm4iLCJpYXQiOjE3NDIyOTE5Mzl9.QcpptSq8LA3jr7wDMGbe5vdOniRc4kUkkYZc255fdEg"
+  }
+]

@@ -1,0 +1,8 @@
+frontend/android
+backend/node_modules
+backend/.env
+backend/prisma/migrations
+test
+.vercel
+backend/serviceAccountKey.json
+backend/prisma/data/Home.json

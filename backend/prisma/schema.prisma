@@ -1,0 +1,126 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/client"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id             Int              @id @default(autoincrement())
+  first_name     String           @db.VarChar(255)
+  last_name      String           @db.VarChar(255)
+  email          String           @unique @db.VarChar(255)
+  password_hash  String           @db.VarChar(255)
+  access_token   String?          @default("") @db.VarChar(255)
+  salt           String?          @default("") @db.VarChar(255)
+  created_at     DateTime         @default(now()) @db.Timestamp(6)
+  updated_at     DateTime         @updatedAt @db.Timestamp(6)
+  home           home[]
+  user_have_home user_have_home[]
+
+  @@index([email], map: "idx_user_email")
+}
+
+model user_have_home {
+  user_id Int
+  home_id Int
+  home    home  @relation(fields: [home_id], references: [id])
+  user    users @relation(fields: [user_id], references: [id])
+
+  @@id([user_id, home_id])
+}
+
+model device {
+  id                       Int                        @id @default(autoincrement())
+  status                   String                     @db.VarChar(50)
+  type                     String                     @db.VarChar(50)
+  power_rating             String                     @db.VarChar(50)
+  room_name                String                     @db.VarChar(255)
+  password                 String?                    @db.VarChar(255)
+  serial_number            String
+  feed                     String                     @db.VarChar(50)
+  home                     home                       @relation(fields: [serial_number], references: [serial_number])
+  device_have_notification device_have_notification[]
+  log_event                log_event[]
+  measurement              measurement[]
+  schedule                 schedule[]
+
+  @@index([room_name], map: "idx_device_roomname")
+}
+
+model measurement {
+  id          Int      @id @default(autoincrement())
+  usage_time  Float
+  consumption Float
+  device_id   Int?
+  month       DateTime @db.Timestamp(6)
+  device      device?  @relation(fields: [device_id], references: [id])
+
+  @@unique([device_id, month])
+}
+
+model schedule {
+  device_id                  Int
+  action_day                 String
+  action_time                DateTime                     @db.Timestamp(6)
+  action                     String                       @db.VarChar(255)
+  value                      Float?
+  is_enable                  Boolean                      @default(true)
+  device                     device                       @relation(fields: [device_id], references: [id])
+  schedule_have_notification schedule_have_notification[]
+
+  @@id([action_time, device_id, action_day])
+}
+
+model log_event {
+  id        Int       @id @default(autoincrement())
+  time_in   DateTime? @db.Timestamp(6)
+  time_out  DateTime? @db.Timestamp(6)
+  action    String?   @db.VarChar(255)
+  device_id Int?
+  device    device?   @relation(fields: [device_id], references: [id])
+}
+
+model notification {
+  id                         Int                          @id @default(autoincrement())
+  content                    String?
+  is_read                    Boolean                      @default(false)
+  device_have_notification   device_have_notification[]
+  schedule_have_notification schedule_have_notification[]
+}
+
+model schedule_have_notification {
+  notification_id Int
+  device_id       Int
+  action_time     DateTime     @db.Timestamp(6)
+  action_day      String
+  schedule        schedule     @relation(fields: [device_id, action_time, action_day], references: [device_id, action_time, action_day])
+  notification    notification @relation(fields: [notification_id], references: [id])
+
+  @@id([notification_id, device_id, action_time])
+}
+
+model device_have_notification {
+  notification_id   Int
+  device_id         Int
+  notification_time DateTime
+  device            device       @relation(fields: [device_id], references: [id])
+  notification      notification @relation(fields: [notification_id], references: [id])
+
+  @@id([notification_id, device_id])
+}
+
+model home {
+  id             Int              @id @default(autoincrement())
+  home_name      String           @db.VarChar(255)
+  serial_number  String           @unique @db.VarChar(255)
+  manager_id     Int?
+  aio_key        String           @unique @db.VarChar(255)
+  device         device[]
+  users          users?           @relation(fields: [manager_id], references: [id])
+  user_have_home user_have_home[]
+}

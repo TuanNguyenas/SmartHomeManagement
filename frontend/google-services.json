@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "441030250482",
+    "project_id": "dadn-hcmut",
+    "storage_bucket": "dadn-hcmut.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441030250482:android:7489994b3ad45334b2656b",
+        "android_client_info": {
+          "package_name": "com.quancters.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk8lSRiz54UZeazaCFlvZkbV_KV5w3JYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
